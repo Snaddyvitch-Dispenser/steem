@@ -44,11 +44,11 @@
 
 #else // IS LIVE STEEM NETWORK
 
-#define STEEM_BLOCKCHAIN_VERSION              ( version(0, 22, 0) )
+#define STEEM_BLOCKCHAIN_VERSION              ( version(0, 1, 0) )
 
-#define STEEM_INIT_PUBLIC_KEY_STR             "STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX"
+#define STEEM_INIT_PUBLIC_KEY_STR             "RST8Y6r7n7WAo4S516XjNx751REUN4FmQtfmtkEikUXiBChHyu2VV"
 #define STEEM_CHAIN_ID fc::sha256()
-#define STEEM_ADDRESS_PREFIX                  "STM"
+#define STEEM_ADDRESS_PREFIX                  "RST"
 
 #define STEEM_GENESIS_TIME                    (fc::time_point_sec(1458835200))
 #define STEEM_MINING_TIME                     (fc::time_point_sec(1458838800))
@@ -67,7 +67,7 @@
 #define STEEM_OWNER_AUTH_RECOVERY_PERIOD                  fc::days(30)
 #define STEEM_ACCOUNT_RECOVERY_REQUEST_EXPIRATION_PERIOD  fc::days(1)
 #define STEEM_OWNER_UPDATE_LIMIT                          fc::minutes(60)
-#define STEEM_OWNER_AUTH_HISTORY_TRACKING_START_BLOCK_NUM 3186477
+#define STEEM_OWNER_AUTH_HISTORY_TRACKING_START_BLOCK_NUM 0
 
 #define STEEM_INIT_SUPPLY                     int64_t(0)
 #define STEEM_SBD_INIT_SUPPLY                 int64_t(0)
@@ -129,7 +129,7 @@
 #define STEEM_POST_AVERAGE_WINDOW             (60*60*24u) // 1 day
 #define STEEM_POST_WEIGHT_CONSTANT            (uint64_t(4*STEEM_100_PERCENT) * (4*STEEM_100_PERCENT))// (4*STEEM_100_PERCENT) -> 2 posts per 1 days, average 1 every 12 hours
 
-#define STEEM_MAX_ACCOUNT_WITNESS_VOTES       30
+#define STEEM_MAX_ACCOUNT_WITNESS_VOTES       5
 
 #define STEEM_DEFAULT_SBD_INTEREST_RATE       (10*STEEM_1_PERCENT) ///< 10% APR
 
@@ -182,7 +182,7 @@
 
 #define STEEM_POST_REWARD_FUND_NAME           ("post")
 #define STEEM_COMMENT_REWARD_FUND_NAME        ("comment")
-#define STEEM_RECENT_RSHARES_DECAY_TIME_HF17    (fc::days(30))
+#define STEEM_RECENT_RSHARES_DECAY_TIME_HF17    (fc::days(15))
 #define STEEM_RECENT_RSHARES_DECAY_TIME_HF19    (fc::days(15))
 #define STEEM_CONTENT_CONSTANT_HF0            (uint128_t(uint64_t(2000000000000ll)))
 // note, if redefining these constants make sure calculate_claims doesn't overflow
@@ -224,9 +224,9 @@
 
 #define STEEM_MIN_PAYOUT_SBD                  (asset(20,SBD_SYMBOL))
 
-#define STEEM_SBD_STOP_PERCENT_HF14           (5*STEEM_1_PERCENT ) // Stop printing SBD at 5% Market Cap
+#define STEEM_SBD_STOP_PERCENT_HF14           (10*STEEM_1_PERCENT ) // Stop printing SBD at 5% Market Cap
 #define STEEM_SBD_STOP_PERCENT_HF20           (10*STEEM_1_PERCENT ) // Stop printing SBD at 10% Market Cap
-#define STEEM_SBD_START_PERCENT_HF14          (2*STEEM_1_PERCENT) // Start reducing printing of SBD at 2% Market Cap
+#define STEEM_SBD_START_PERCENT_HF14          (9*STEEM_1_PERCENT) // Start reducing printing of SBD at 2% Market Cap
 #define STEEM_SBD_START_PERCENT_HF20          (9*STEEM_1_PERCENT) // Start reducing printing of SBD at 9% Market Cap
 
 #define STEEM_MIN_ACCOUNT_NAME_LENGTH          3
@@ -256,7 +256,7 @@
 #define STEEM_FEED_HISTORY_WINDOW             (12*7) // 3.5 days
 #define STEEM_MAX_FEED_AGE_SECONDS            (60*60*24*7) // 7 days
 #define STEEM_MIN_FEEDS                       (STEEM_MAX_WITNESSES/3) /// protects the network from conversions before price has been established
-#define STEEM_CONVERSION_DELAY_PRE_HF_16      (fc::days(7))
+#define STEEM_CONVERSION_DELAY_PRE_HF_16      (fc::hours(STEEM_FEED_HISTORY_WINDOW))
 #define STEEM_CONVERSION_DELAY                (fc::hours(STEEM_FEED_HISTORY_WINDOW)) //3.5 day conversion
 
 #define STEEM_MIN_UNDO_HISTORY                10
@@ -268,7 +268,7 @@
 #define STEEM_BLOCKCHAIN_PRECISION_DIGITS     3
 #define STEEM_MAX_INSTANCE_ID                 (uint64_t(-1)>>16)
 /** NOTE: making this a power of 2 (say 2^15) would greatly accelerate fee calcs */
-#define STEEM_MAX_AUTHORITY_MEMBERSHIP        40
+#define STEEM_MAX_AUTHORITY_MEMBERSHIP        100
 #define STEEM_MAX_ASSET_WHITELIST_AUTHORITIES 10
 #define STEEM_MAX_URL_LENGTH                  127
 
@@ -326,7 +326,7 @@
  */
 ///@{
 /// Represents the current witnesses
-#define STEEM_MINER_ACCOUNT                   "miners"
+#define STEEM_MINER_ACCOUNT                   "witness.funds"
 /// Represents the canonical account with NO authority (nobody can access funds in null account)
 #define STEEM_NULL_ACCOUNT                    "null"
 /// Represents the canonical account with WILDCARD authority (anybody can access funds in temp account)
