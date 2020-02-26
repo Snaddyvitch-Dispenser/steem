@@ -13,7 +13,7 @@
 
 #define STEEM_INIT_PRIVATE_KEY                (fc::ecc::private_key::regenerate(fc::sha256::hash(std::string("init_key"))))
 #define STEEM_INIT_PUBLIC_KEY_STR             (std::string( steem::protocol::public_key_type(STEEM_INIT_PRIVATE_KEY.get_public_key()) ))
-#define STEEM_CHAIN_ID (fc::sha256::hash("testnet"))
+#define STEEM_CHAIN_ID (fc::sha256::hash("resetchaintestnet"))
 #define STEEM_ADDRESS_PREFIX                  "TST"
 
 #define STEEM_GENESIS_TIME                    (fc::time_point_sec(1451606400))
@@ -47,7 +47,7 @@
 #define STEEM_BLOCKCHAIN_VERSION              ( version(0, 1, 0) )
 
 #define STEEM_INIT_PUBLIC_KEY_STR             "RST8Y6r7n7WAo4S516XjNx751REUN4FmQtfmtkEikUXiBChHyu2VV"
-#define STEEM_CHAIN_ID fc::sha256()
+#define STEEM_CHAIN_ID (fc::sha256::hash("resetchain"))
 #define STEEM_ADDRESS_PREFIX                  "RST"
 
 #define STEEM_GENESIS_TIME                    (fc::time_point_sec(1458835200))
